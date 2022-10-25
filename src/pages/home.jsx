@@ -1,25 +1,33 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import EditFrame from "../components/editframe";
 import UploadFrame from "../components/uploadframe";
 
 function Home() {
+	const navigate = useNavigate();
 	const [image, setImage] = useState([]);
 
 	return (
 		<div className="home-container">
-			<div className="app-step">Step 1: Upload the image</div>
+			<div className="app-step">Upload the image</div>
 			{/* <div className="title">Upload Image</div> */}
 			<div className="image-container">
 				<div className="image-upload">
 					<UploadFrame image={image} setImage={setImage} />
 				</div>
-                <div className="image-edit"></div>
+				<div className="next-panel">
+					{image[0] && (
+						<button
+							className="proceed"
+							onClick={() =>
+								navigate("/edit", { state: { image: image[0].data_url } })
+							}
+						>
+							Proceed with this image
+						</button>
+					)}
+				</div>
 			</div>
-			<div id="divider" />
-			<div className="transform-container">
-                <div className="app-step">Step 2: Edit the image</div>
-                <EditFrame image={image} />
-            </div>
 		</div>
 	);
 }
