@@ -74,7 +74,7 @@ body {
 .home-container, .edit-panel {
   background-color: var(--container-colour);
   width: min(800px, 100% - 1rem);
-  padding: 1rem;
+  padding: 1rem min(1%, 1rem) 1rem min(1%, 1rem);
   /* box-shadow: 2px 2px 8px rgb(141, 141, 141) */
 }
 
@@ -148,12 +148,39 @@ body {
 
 /* Edit */
 
+.image-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  background-color: var(--box-colour);
+  height: 150px;
+  border: 2px solid var(--accent-colour);
+  margin-bottom: 2rem;
+}
+
+.image-preview > img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .edit-container {
   display: flex;
   justify-content: start;
+  width: inherit;
 }
 
-.edit__resize-heading {
+.edit-form {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 2rem;
+  background-color: var(--theme-colour);
+  padding: 0.5rem;
+}
+
+.edit__heading {
   font-weight: 600;
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
@@ -163,16 +190,51 @@ body {
 .edit__panel {
   display: grid;
   column-gap: 1rem;
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(10px, 1fr));
+}
+
+.edit__panel > * {
+  display: flex;
+  flex-direction: column;
 }
 
 .edit__panel :is(input) {
   padding: 0.4rem;
   outline: none;
+  width: inherit;
+}
+
+:is(.edit__flip, .edit__sharp-blur) > .edit__panel > :is(#flipX, #flipY, #sharp-config, #blur-config) {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 #config-text {
   margin-bottom: 0.25rem;
+}
+
+.edit__buttons {
+  grid-column: span 2;
+  display: flex;
+  justify-content: center;
+}
+
+.submit, .home-button {
+  height: 40px;
+  width: min(200px, 100%);
+  margin: 0 0.5rem 0 0.5rem;
+  background-color: var(--accent-colour);
+  border: 2px dashed var(--accent2-colour);
+  color: var(--dark-text-colour);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color ease-in-out 0.2s;
+  font-size: 1.05rem;
+  font-family: 'Asap', sans-serif;
+}
+
+:is(.submit, .home-button):hover {
+  background-color: var(--accent2-colour);
+  border: 2px dashed var(--accent-colour);
 }

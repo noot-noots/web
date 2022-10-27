@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import EditFrame from "../components/editframe";
 import UploadFrame from "../components/uploadframe";
 
 function Home() {
