@@ -167,7 +167,7 @@ body {
 
 .edit-container {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   width: inherit;
 }
 
@@ -204,7 +204,7 @@ body {
   width: inherit;
 }
 
-:is(.edit__flip, .edit__sharp-blur) > .edit__panel > :is(#flipX, #flipY, #sharp-config, #blur-config) {
+:is(.edit__flip) > .edit__panel > :is(#flipX, #flipY, #sharp-config, #blur-config) {
   display: flex;
   flex-direction: row;
   justify-content: center;

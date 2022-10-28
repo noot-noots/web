@@ -1,22 +1,32 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 function EditFrame({ image }) {
-	const navigate = useNavigate();
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm({
-    // defaultValues: {
-    //     resizeWidth: 1080,
-    //     resizeHeight: 1920
-    // }
+    defaultValues: {
+      rotate: "0",
+    },
   });
-  const [data, setData] = useState("");
+
+  const onSubmit = (data) => {
+	var ndata = {
+    rotate: data.rotate ? data.rotate : "0",
+    resize: (data.resizeWidth || data.resizeHeight) ? `${(data.resizeWidth || null)}x${data.resizeHeight || null}` : null,
+    flip: data.flipX || null,
+    flop: data.flipY || null,
+    sharpen: data.sharpen || null,
+    blur: data.blur || null
+  };
+  
+  navigate('/download', {state: {data: ndata}});
+	
+  }
+
   // setData(JSON.stringify(data)
   return (
     <div className="edit-container">
-      <form
-        className="edit-form"
-      >
+      <form className="edit-form">
         <div className="edit__resize-container">
           <div className="edit__heading">Resize</div>
           <div className="edit__resize-options">
@@ -71,20 +81,29 @@ function EditFrame({ image }) {
             <div className="edit__sharp-blur">
               <div className="edit__panel edit__sharp-blur-config">
                 <div id="sharp-config">
-                  <input type="checkbox" {...register("flipX")} />
-                  <span>Sharpen Image</span>
+                <div id="config-text">Sharpen Image</div>
+                  <input type="number" {...register("sharpen")} min="0" max="10" />
+                  
                 </div>
                 <div id="blur-config">
-                  <input type="checkbox" {...register("flipY")} />
-                  <span>Blur Image</span>
+                <div id="config-text">Blur Image</div>
+                  <input type="number" {...register("blur")} min="0" max="10" />
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="edit__buttons">
-          <button className="home-button" onClick={() => navigate('/')}>Select another image</button>
-          <button className="submit" type="submit" onClick={handleSubmit((data) => console.log(data))}>Apply</button>
+          <button className="home-button" onClick={() => navigate("/")}>
+            Select another image
+          </button>
+          <button
+            className="submit"
+            type="submit"
+            onClick={handleSubmit((data) => onSubmit(data))}
+          >
+            Apply
+          </button>
         </div>
       </form>
     </div>
