@@ -18,8 +18,8 @@ function EditFrame({ image }) {
     sharpen: data.sharpen || null,
     blur: data.blur || null
   };
-  
-  navigate('/download', {state: {data: ndata}});
+
+  navigate('/download', {state: {data: ndata, image: image}});
 	
   }
 

@@ -19,7 +19,8 @@ function Home() {
 						<button
 							className="proceed"
 							onClick={() =>
-								navigate("/edit", { state: { image: image[0].data_url } })
+								{	console.log(image[0])
+									navigate("/edit", { state: { image: image[0].data_url } })}
 							}
 						>
 							Proceed with this image
