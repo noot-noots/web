@@ -20,7 +20,7 @@ function Home() {
 							className="proceed"
 							onClick={() =>
 								{	console.log(image[0])
-									navigate("/edit", { state: { image: image[0].data_url } })}
+									navigate("/edit", { state: { image: image[0].data_url, file: image[0].file } })}
 							}
 						>
 							Proceed with this image

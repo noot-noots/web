@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-function EditFrame({ image }) {
+function EditFrame({ image, file }) {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm({
     defaultValues: {
@@ -18,8 +18,8 @@ function EditFrame({ image }) {
     sharpen: data.sharpen || null,
     blur: data.blur || null
   };
-
-  navigate('/download', {state: {data: ndata, image: image}});
+  console.log(file);
+  navigate('/download', {state: {data: ndata, image: file}});
 	
   }
 

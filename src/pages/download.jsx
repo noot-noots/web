@@ -7,15 +7,15 @@ function DownloadPage() {
     const location = useLocation();
     const {data, image} = location.state;
 
-    const [image2, setImage2] = useState();
+    const [servedImage, setServedImage] = useState();
     
     useEffect(() => {
-        PostImage(data, image).then(_ => console.log(_));
+        PostImage(data, image).then(img => setServedImage(img.image));
     }, [data, image])
 
     return (
         <div className="download-panel">
-            <img src={image2} alt="b"/>
+            {servedImage && <img src={servedImage} alt="b"/> }
         </div>
     )
 }

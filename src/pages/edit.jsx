@@ -11,7 +11,7 @@ function Edit() {
                     <img src={location.state.image} alt="this"/>
                 </div>
                 
-				<EditFrame image={location.state.image} />
+				<EditFrame image={location.state.image} file={location.state.file} />
 			</div>
         </div>
     )
