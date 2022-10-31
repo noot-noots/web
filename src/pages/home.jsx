@@ -9,7 +9,6 @@ function Home() {
 	return (
 		<div className="home-container">
 			<div className="app-step">Upload the image</div>
-			{/* <div className="title">Upload Image</div> */}
 			<div className="image-container">
 				<div className="image-upload">
 					<UploadFrame image={image} setImage={setImage} />

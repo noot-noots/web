@@ -71,14 +71,14 @@ body {
 
 /* Home Page */
 
-.home-container, .edit-panel {
+.home-container, .edit-panel, .download-panel {
   background-color: var(--container-colour);
   width: min(800px, 100% - 1rem);
   padding: 1rem min(1%, 1rem) 1rem min(1%, 1rem);
   /* box-shadow: 2px 2px 8px rgb(141, 141, 141) */
 }
 
-.home-container .next-panel {
+.home-container .next-panel, .download-panel .download-frame {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -125,7 +125,7 @@ body {
   background-color: var(--theme-colour);
 }
 
-.upload-container :is(button) {
+:is(.upload-container, .download-frame) :is(button) {
   width: min(200px, 100%);
   height: 40px;
   margin: 0 0.5rem 0 0.5rem;
@@ -139,7 +139,7 @@ body {
   font-family: 'Asap', sans-serif;
 }
 
-.upload-container :is(button):hover {
+:is(.upload-container, .download-frame) :is(button):hover {
   background-color: var(--accent2-colour);
   border: 2px dashed var(--accent-colour);
 }
@@ -237,4 +237,8 @@ body {
 :is(.submit, .home-button):hover {
   background-color: var(--accent2-colour);
   border: 2px dashed var(--accent-colour);
+}
+
+.download-image {
+  height: 400px;
 }

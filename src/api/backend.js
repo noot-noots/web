@@ -1,7 +1,7 @@
 import axios from "axios";
 import FormData from "form-data";
 
-const url = "http://13.210.183.226/alter-image";
+const url = "http://3.25.72.6/alter-image";
 
 export const PostImage = async (data, image) => {
   var form = new FormData();
@@ -11,31 +11,13 @@ export const PostImage = async (data, image) => {
   console.log(nUrl);
   console.log(image);
 
-  return await axios.post(nUrl, form).then((res) => res.data);
-
-  // return await fetch(image).then(res => res.blob()).then(blob => {
-  //   form.append('image', blob);
-  //   fetch(nUrl, {
-  //   method: "POST",
-  //   headers: {
-  //     'Content-Type': 'multipart/form-data'
-  //   },
-  //   body: form,
-  // })
-  //   .then((res) => res.json())
-  //   .catch((err) => console.log(err));
-  // })
-
-  // fetch(nUrl, {
-  //   method: "POST",
-  //   body: form,
-  // })
-  //   .then((res) => res.json())
-  //   .catch((err) => console.log(err));
-
-  // return await fetch (`${url}/test`, {
-  //     method: "GET"
-  // }).then(_ => console.log(_));
+  return await axios
+    .post(nUrl, form)
+    .then((res) => res.data)
+    .catch((err) => {
+      console.log(err);
+      return null;
+    });
 };
 
 const CreateQuery = (data) => {
