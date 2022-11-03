@@ -3,13 +3,12 @@ import FormData from "form-data";
 
 const url = "http://3.25.72.6/alter-image";
 
+// Sends a post request to the server to retrieve the image
 export const PostImage = async (data, image) => {
   var form = new FormData();
   form.append("image_form", image);
 
   const nUrl = CreateQuery(data);
-  console.log(nUrl);
-  console.log(image);
 
   return await axios
     .post(nUrl, form)
@@ -20,6 +19,7 @@ export const PostImage = async (data, image) => {
     });
 };
 
+// Creates a query based on the user input
 const CreateQuery = (data) => {
   var nUrl = `${url}?rotate=${data.rotate}`;
 

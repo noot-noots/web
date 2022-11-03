@@ -3,12 +3,15 @@ import { useNavigate } from "react-router-dom";
 
 function EditFrame({ image, file }) {
   const navigate = useNavigate();
+
+  // Creates a form from useForm package
   const { register, handleSubmit } = useForm({
     defaultValues: {
       rotate: "0",
     },
   });
 
+  // On Submit, navigates to the '/download' page and passes in the data.
   const onSubmit = (data) => {
 	var ndata = {
     rotate: data.rotate ? data.rotate : "0",
@@ -18,7 +21,6 @@ function EditFrame({ image, file }) {
     sharpen: data.sharpen || null,
     blur: data.blur || null
   };
-  console.log(file);
   navigate('/download', {state: {data: ndata, image: file}});
 	
   }
