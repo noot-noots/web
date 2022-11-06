@@ -1,7 +1,7 @@
 import axios from "axios";
 import FormData from "form-data";
 
-const url = "http://3.25.72.6/alter-image";
+const url = "/api/alter-image";
 
 // Sends a post request to the server to retrieve the image
 export const PostImage = async (data, image) => {
@@ -12,7 +12,10 @@ export const PostImage = async (data, image) => {
 
   return await axios
     .post(nUrl, form)
-    .then((res) => res.data)
+    .then((res) => {
+      console.log(res);
+      return res.data;
+    })
     .catch((err) => {
       console.log(err);
       return null;
